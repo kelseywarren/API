@@ -1,6 +1,6 @@
 const express = require('express'); 
 const app = express();
-const wbc = require('./wbc-data.js')
+const wbc = require('./data/wbc-data.js')
 
 app.get('/wbc', (req, res) => {
     res.send(wbc)
