@@ -2,40 +2,40 @@ const wbc = {
     data: [
         {   
             id: 1,
-            name: 'name',
-            shortName: 'name',
+            name: 'Neutrophil',
+            shortName: 'seg',
             description: 'text',
             image: 'url'
 
         },
         {   
             id: 2,
-            name: 'name',
-            shortName: 'name',
+            name: 'Lympocyte',
+            shortName: 'lymph',
             description: 'text',
             image: 'url'
 
         },
         {   
             id: 3,
-            name: 'name',
-            shortName: 'name',
+            name: 'Monocyte',
+            shortName: 'mono',
             description: 'text',
             image: 'url'
 
         },
         {   
             id: 4,
-            name: 'name',
-            shortName: 'name',
+            name: 'Eosinophil',
+            shortName: 'eos',
             description: 'text',
             image: 'url'
 
         },
         {   
             id: 5,
-            name: 'name',
-            shortName: 'name',
+            name: 'Basophil',
+            shortName: 'baso',
             description: 'text',
             image: 'url'
 
