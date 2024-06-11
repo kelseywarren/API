@@ -7,25 +7,32 @@ const cors = require('cors')
 require('dotenv').config();
 const pw = process.env.MONGO_PW;
 const mongo_user = process.env.MONGO_USER;
+const port = process.env.PORT || 4000;
 
-const wbc = require('./data/wbc-data.js');
-const rbc = require('./data/rbc-data.js');
 
 app.use(cors());
 
-app.get('/wbc', (req, res) => {
-    res.send(wbc);
-});
-
-app.get('/rbc', (req, res) => {
-    res.send(rbc);
-});
-
-mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/sample_mflix?retryWrites=true&w=majority&appName=MLS-API`)
-  .then(() => console.log('Connected to Database!'));
-
-// PORT
-const port = process.env.PORT || 4000;
-app.listen(port, () => {
+mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/MLS-API?retryWrites=true&w=majority&appName=MLS-API`)
+  .then(() => {
+    console.log('Connected to Database!')
+  });
+  
+    app.listen(port, () => {
     console.log(`server running on port ${port}`);
 });
+
+const userSchema = new mongoose.Schema({
+    name: String,
+    shortName: String,
+    description: String,
+    image: String
+    
+});
+
+const UserModel = mongoose.model("wbc", userSchema, "wbc");
+
+app.get("/wbc", async(req, res) => {
+    const userData = await UserModel.find();
+    res.json(userData)
+    console.log(userData)
+})
