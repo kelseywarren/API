@@ -20,18 +20,17 @@ mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/
   });
 });
 
-const userSchema = new mongoose.Schema({
+const wbcSchema = new mongoose.Schema({
     name: String,
     shortName: String,
     description: String,
-    image: String
-    
+    image: String   
 });
 
-const UserModel = mongoose.model("wbc", userSchema, "wbc");
+const wbcModel = mongoose.model("wbc", wbcSchema, "wbc");
 
 app.get("/wbc", async(req, res) => {
-    const userData = await UserModel.find();
-    res.json(userData)
-    console.log(userData)
-})
+    const wbcData = await wbcModel.find();
+    res.json(wbcData)
+    console.log(wbcData)
+});
