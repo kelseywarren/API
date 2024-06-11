@@ -18,6 +18,9 @@ mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/
     app.listen(port, () => {
         console.log(`server running on port ${port}`);
   });
+})
+.catch((error) => {
+    console.log("Failed to connect to database"); 
 });
 
 const wbcSchema = new mongoose.Schema({
