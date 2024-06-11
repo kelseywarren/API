@@ -1,6 +1,7 @@
 const express = require('express'); 
 const app = express();
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Rbc = require('./models/Rbc');
 
 const cors = require('cors')
 
@@ -37,3 +38,16 @@ app.get("/wbc", async(req, res) => {
     res.json(wbcData)
     console.log(wbcData)
 });
+
+/*
+const rbc = new Rbc({
+    name: 'Burr Cell',
+    description: 'Dull spiked edge around entirety of cell',
+    image: 'url'
+})
+*/
+
+app.get("/rbc", async(req, res) => {
+    const rbcData = await Rbc.find();
+    res.send({"data": rbcData})
+})
