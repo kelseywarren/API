@@ -15,10 +15,9 @@ app.use(cors());
 mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/MLS-API?retryWrites=true&w=majority&appName=MLS-API`)
   .then(() => {
     console.log('Connected to Database!')
-  });
-  
     app.listen(port, () => {
-    console.log(`server running on port ${port}`);
+        console.log(`server running on port ${port}`);
+  });
 });
 
 const userSchema = new mongoose.Schema({
