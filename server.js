@@ -1,20 +1,25 @@
+// Express 
 const express = require('express'); 
 const app = express();
+
+// Mongoose 
 const mongoose = require('mongoose');
-const Rbc = require('./models/Rbc');
-const Wbc = require('./models/Wbc')
 
-const cors = require('cors')
-
+// Environment Variables 
 require('dotenv').config();
-const pw = process.env.MONGO_PW;
-const mongo_user = process.env.MONGO_USER;
+const mongo = process.env.MONGODB_URI;
 const port = process.env.PORT || 4000;
 
+// Models
+const Rbc = require('./models/Rbc');
+const Wbc = require('./models/Wbc');
 
+// Cors 
+const cors = require('cors');
 app.use(cors());
 
-mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/MLS-API?retryWrites=true&w=majority&appName=MLS-API`)
+// Database and server connect 
+mongoose.connect(`${mongo}`)
   .then(() => {
     console.log('Connected to Database!')
     app.listen(port, () => {
@@ -25,32 +30,17 @@ mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/
     console.log("Failed to connect to database"); 
 });
 
-/*
-const wbc = new Wbc({
-    name: 'Neutrophil',
-    shortName: 'seg',
-    description: 'pink reddish granules in background with purplish segmented lobes',
-    image: 'url'
-})
-*/
 
-
+// Request wbc data
 app.get("/wbc", async(req, res) => {
     const wbcData = await Wbc.find();
     res.json({"data": wbcData})
     console.log(wbcData)
 });
 
-/*
-const rbc = new Rbc({
-    name: 'Burr Cell',
-    description: 'Dull spiked edge around entirety of cell',
-    image: 'url'
-})
-*/
-
+// Request rbc data 
 app.get("/rbc", async(req, res) => {
     const rbcData = await Rbc.find();
     res.json({"data": rbcData})
     console.log(rbcData)
-})
+});
