@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const Rbc = require('./models/Rbc');
+const Wbc = require('./models/Wbc')
 
 const cors = require('cors')
 
@@ -24,17 +25,18 @@ mongoose.connect(`mongodb+srv://${mongo_user}:${pw}@mls-api.wtbh5mx.mongodb.net/
     console.log("Failed to connect to database"); 
 });
 
-const wbcSchema = new mongoose.Schema({
-    name: String,
-    shortName: String,
-    description: String,
-    image: String   
-});
+/*
+const wbc = new Wbc({
+    name: 'Neutrophil',
+    shortName: 'seg',
+    description: 'pink reddish granules in background with purplish segmented lobes',
+    image: 'url'
+})
+*/
 
-const wbcModel = mongoose.model("wbc", wbcSchema, "wbc");
 
 app.get("/wbc", async(req, res) => {
-    const wbcData = await wbcModel.find();
+    const wbcData = await Wbc.find();
     res.json(wbcData)
     console.log(wbcData)
 });
@@ -50,4 +52,5 @@ const rbc = new Rbc({
 app.get("/rbc", async(req, res) => {
     const rbcData = await Rbc.find();
     res.send({"data": rbcData})
+    console.log(rbcData)
 })
