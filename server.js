@@ -37,7 +37,7 @@ const wbc = new Wbc({
 
 app.get("/wbc", async(req, res) => {
     const wbcData = await Wbc.find();
-    res.json(wbcData)
+    res.json({"data": wbcData})
     console.log(wbcData)
 });
 
@@ -51,6 +51,6 @@ const rbc = new Rbc({
 
 app.get("/rbc", async(req, res) => {
     const rbcData = await Rbc.find();
-    res.send({"data": rbcData})
+    res.json({"data": rbcData})
     console.log(rbcData)
 })
