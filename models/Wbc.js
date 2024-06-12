@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const wbcSchema = new Schema({
     _id: Number,
     name: String,
-    shortName: String,
+    types: [
+        String,
+    ], 
     description: String,
     image: String
 },
