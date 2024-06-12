@@ -6,6 +6,9 @@ const wbcSchema = new Schema({
     shortName: String,
     description: String,
     image: String
+},
+{
+    versionKey: false
 });
 
 

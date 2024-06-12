@@ -5,6 +5,9 @@ const rbcSchema = new Schema({
     name: String,
     description: String,
     image: String
+},
+{
+    versionKey: false
 });
 
 
