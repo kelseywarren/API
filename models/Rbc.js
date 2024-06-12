@@ -8,7 +8,7 @@ const rbcSchema = new Schema({
     image: String
 },
 {
-    versionKey: false,
+    versionKey: false
 });
 
 

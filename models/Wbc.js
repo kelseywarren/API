@@ -9,7 +9,7 @@ const wbcSchema = new Schema({
     image: String
 },
 {
-    versionKey: false,
+    versionKey: false
 });
 
 
