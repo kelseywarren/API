@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const rbcSchema = new Schema({
     _id: Number,
     name: String,
+    other_name: String,
     description: String,
     image: String
 },
