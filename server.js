@@ -34,13 +34,23 @@ mongoose.connect(`${mongo}`)
 // Request wbc data
 app.get("/wbc", async(req, res) => {
     const wbcData = await Wbc.find();
-    res.json({"data": wbcData})
-    console.log(wbcData)
+    if (wbcData) {
+        res.json({"data": wbcData});
+        console.log(wbcData);
+    } else {
+        res.status(500).json({error: "failed to retrieve data from server"});
+    };
+
 });
 
 // Request rbc data 
 app.get("/rbc", async(req, res) => {
     const rbcData = await Rbc.find();
-    res.json({"data": rbcData})
-    console.log(rbcData)
+    if (rbcData) {
+        res.json({"data": rbcData});
+        console.log(rbcData);
+    } else {
+        res.status(500).json({error: "failed to retrieve data from server"});
+    };
 });
+
