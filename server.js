@@ -40,7 +40,6 @@ app.get("/wbc", async(req, res) => {
     } else {
         res.status(500).json({error: "failed to retrieve data from server"});
     };
-
 });
 
 // Request rbc data 
