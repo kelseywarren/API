@@ -16,4 +16,4 @@ Main purpose of this project is get experience with:
 - MongoDB
 
 #### More to be added later
-Seperate repo likely to be made for client site
+Seperate repo to be made for client site
