@@ -41,6 +41,13 @@ app.get("/wbc", async(req, res) => {
         res.status(500).json({error: "failed to retrieve data from server"});
     };
 
+    if (wbcData) {
+        res.json({"data": wbcData});
+        console.log(wbcData);
+    } else {
+        res.status(500).json({error: "failed to retrieve data from server"});
+    };
+
 });
 
 // Request rbc data 
